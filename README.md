@@ -52,6 +52,7 @@ Above all this functionality I have also added an option to exclude cache bundli
 
 ## Note: 
 For alerting around my cache bundling I have preferred [Slack Notifcation](https://api.slack.com/messaging/webhooks).
+
 And for JS Soucemap integration related alerts I preferred [sentry](https://sentry.io/)
 
 
