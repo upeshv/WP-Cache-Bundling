@@ -16,6 +16,9 @@ Below is the list of features that are used to optimzied page load and proper er
 
 
 
+
+
+
 **First Fold CSS**
 ```
   add_onload_attribute_link_tag()
@@ -42,7 +45,11 @@ Below is the list of features that are used to optimzied page load and proper er
   cache_bundling_functionality()
 ```
 
+
+
+
 Above all this functionality I have also added an option to exclude cache bundling based on pages, you just need to add the page URL excluding domain name example: /homepage separated by a comma for multiple page URL.
+
 
 
 
