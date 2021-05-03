@@ -14,10 +14,9 @@ Below is the list of features that are used to optimzied page load and proper er
 * Delete caching directory
 * Working Logic around cache bundling of CSS and JS along with sourcemap
 
-
-
-
-
+<br>
+<br>
+<br>
 
 **First Fold CSS**
 ```
@@ -44,15 +43,14 @@ Below is the list of features that are used to optimzied page load and proper er
 ```
   cache_bundling_functionality()
 ```
-
-
-
+<br>
+<br>
 
 Above all this functionality I have also added an option to exclude cache bundling based on pages, you just need to add the page URL excluding domain name example: /homepage separated by a comma for multiple page URL.
-
-
-
-
+<br>
+<br>
+<br>
+<br>
 
 ## Note: 
 For alerting around my cache bundling I have preferred [Slack Notifcation](https://api.slack.com/messaging/webhooks).
