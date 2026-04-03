@@ -1,5 +1,12 @@
 <?php
 
+// Initialize WP_Filesystem
+global $wp_filesystem;
+if (empty($wp_filesystem)) {
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    WP_Filesystem();
+}
+
 require 'composer/vendor/autoload.php';
 use axy\sourcemap\SourceMap;
 
@@ -148,6 +155,10 @@ class awesome_Cache_Bundling
  * @param string $dir the directory name
  */
 function deleteDir($dir) {
+  // Safety check: Ensure we are only deleting within the wp-content/cache directory
+  if (strpos($dir, ABSPATH . 'wp-content/cache/') === false) {
+      return;
+  }
   foreach (glob($dir) as $file) {
     if (is_dir($file)) {
       $this->deleteDir("$file/*");
@@ -226,7 +237,8 @@ function cache_bundling_functionality($content) {
           //Check map file exists
           if (file_exists($path_map_file)) {
             //md5 name creation creating with files name and query string
-            $script_md5 .= str_replace("/wp-content/themes/themesname/", "", $parse_url_path) . parse_url($url, PHP_URL_QUERY);
+            $theme_path = '/wp-content/themes/' . get_stylesheet() . '/';
+            $script_md5 .= str_replace($theme_path, "", $parse_url_path) . parse_url($url, PHP_URL_QUERY);
 
             $script_files[] = array("parse_url_path" => $cache_root_dir . $parse_url_path, "map_file" => $path_map_file);
 
@@ -280,7 +292,7 @@ function cache_bundling_functionality($content) {
 
     // save the resulting JS-file
     $result = implode("\n", $result);
-    file_put_contents($js_md5_path, $result);
+    $wp_filesystem->put_contents($js_md5_path, $result, FS_CHMOD_FILE);
 
     // save the resulting source map
     $map->save($js_md5_map_path);
@@ -315,7 +327,8 @@ function cache_bundling_functionality($content) {
           $parse_url = parse_url($url, PHP_URL_PATH);
 
           //md5 name creation creating with files name and query string
-          $style_md5 .= str_replace("/wp-content/themes/themesname/", "", $parse_url) . parse_url($url, PHP_URL_QUERY);
+          $theme_path = '/wp-content/themes/' . get_stylesheet() . '/';
+          $style_md5 .= str_replace($theme_path, "", $parse_url) . parse_url($url, PHP_URL_QUERY);
 
           $style_files[] = $parse_url;
 
