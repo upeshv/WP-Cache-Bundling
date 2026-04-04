@@ -41,8 +41,8 @@ The core logic is encapsulated within the `awesome_Cache_Bundling` class, mapped
 ## 📡 Monitoring & Observability
 For high-scale production environments, maintaining visibility is critical. This engine utilizes a dual-layer alerting strategy:
 
-* **Infrastructure Alerts (Slack):** For real-time notifications regarding the cache bundling lifecycle and generation status, I have integrated **Slack Webhooks**.
-* **Error Tracking (Sentry):** For JS Sourcemap integration and client-side error reporting, I utilize **Sentry** to map minified production code back to original source files.
+* **Infrastructure Alerts (Slack):** For real-time notifications regarding the cache bundling lifecycle and generation status, I have integrated [**Slack Webhooks**](https://docs.slack.dev/messaging/sending-messages-using-incoming-webhooks/).
+* **Error Tracking (Sentry):** For JS Sourcemap integration and client-side error reporting, I utilize [**Sentry**](https://sentry.io/) to map minified production code back to original source files.
 
 ---
 
